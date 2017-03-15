@@ -104,11 +104,13 @@ Well that certainly sounds like a big mess, doesn't it?
 
 This technique is called *recursive partitioning* and it enables exploring the data space, making it easier to visualize decision rules of for a continuous outcome (a regression tree), like we are examining here, or for a categorical outcome (a decision tree), like we will talk about in a bit.
 
+*CART: classification (con't outcome) and regression tree (discrete outcome)
+
 First, today's vocabulary lesson:
 
 |          Term      |     Definition                                                                |
 |--------------------|-------------------------------------------------------------------------------|
-| Root node          | Represents the entire pop'n, gets divided into 2 more homogeneous subsets     |
+| Root node          | Represents the entire pop'n (all the observations), gets divided into 2 more homogeneous subsets     |
 | Splitting          | Dividing a node into two or more sub-nodes                                    |
 | Node               | Some  (sub)set of observations                                                |
 | Decision Node      | When a sub-node splits into further subnodes                                  |
@@ -352,6 +354,7 @@ summary(fitk)
 plot(fitk, uniform = TRUE, main = "Classification Tree for Kyphosis")
 text(fitk, use.n = TRUE, all = TRUE, cex = 0.8)
 ```
+*So now we are talking about majority rather than average
 
 Now let's try pruning the tree:
 
@@ -642,9 +645,11 @@ is.factor(people$fdiab)
 
 
 ```{r}
-#diabrf <- rfsrc(fdiab ~ Age + Gender + BMI + PhysActive, data = people, ntree = 1000, tree.err = TRUE)
+#
+diabrf <- rfsrc(fdiab ~ Age + Gender + BMI + PhysActive, data = people, ntree = 1000, tree.err = TRUE)
 
-#diabrf
+#
+diabrf
 
 ```
 
